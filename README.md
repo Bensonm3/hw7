@@ -9,10 +9,10 @@ I WANT a developer profile generator
 SO THAT I can easily prepare reports for stakeholders
 
 Features:
-Generate an HTML profile for a Github user by only typing their name
+Generate an HTML profile for a Github user by only typing their username
 4 different color configurations are used 
 
-instructions:
+Instructions:
 Download and open the index.js file
 Ensure you have node fetch, inquirer, and fs installed in your terminal
 code is initialized by typing 'node index' into the terminal
@@ -24,7 +24,7 @@ User is then prompted to input their github Username
 	If the username does exist, no error message will display and the results will be 
 	written to profile.html
 	
-	Known issues:
-	I tried to follow along with the suggested styling, however I was unable to determine
-	what some of the styling elements were used for, so they have not been implemented in
-	the generated profile.
+Known issues:
+I tried to follow along with the suggested styling, however I was unable to determine
+what some of the styling elements were used for, so they have not been implemented in
+the generated profile.
