@@ -24,12 +24,8 @@ const colors = {
       photoBorderColor: "white"
     }
   };
-  var locationURL ='https://www.google.com/maps/place/'+location;
-  var queryURL = "https://api.github.com/users/"+username;
-  $.ajax({
-      url: queryURL,
-      method: "GET"
-}).then
+ 
+ 
 
 
 
