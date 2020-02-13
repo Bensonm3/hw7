@@ -1,30 +1,33 @@
 const inquirer = require('inquirer');
 const fetch = require("node-fetch");
 const fs = require('fs');
+var pdf = require('html-pdf');
+
+var options = { format: 'Letter' };
 const colors = {
     green: {
       wrapperBackground: "#E6E1C3",
       headerBackground: "#C1C72C",
-      headerColor: "black",
-      photoBorderColor: "#black"
+      headerColor: "#000000",
+      photoBorderColor: "#000000"
     },
     blue: {
       wrapperBackground: "#5F64D3",
       headerBackground: "#26175A",
-      headerColor: "white",
+      headerColor: "#ffffff",
       photoBorderColor: "#73448C"
     },
     pink: {
       wrapperBackground: "#879CDF",
       headerBackground: "#FF8374",
-      headerColor: "white",
+      headerColor: "#ffffff",
       photoBorderColor: "#FEE24C"
     },
     red: {
       wrapperBackground: "#DE9967",
       headerBackground: "#870603",
-      headerColor: "white",
-      photoBorderColor: "white"
+      headerColor: "#ffffff",
+      photoBorderColor: "#ffffff"
     }
   };
 inquirer.prompt(
@@ -46,8 +49,9 @@ inquirer.prompt(
         const STARcall = await fetch(`https://api.github.com/users/${responses.UserName}/starred`);
         const APIcall = await fetch(`https://api.github.com/users/${responses.UserName}`);
         if (APIcall.status >= 400) {
-            console.log("Error writing file, try searching again");
+            console.log("Error writing file, try again");
           }
+          else{
         const stardata = await STARcall.json(); 
         const data = await APIcall.json();
         let locationURL = 'https://www.google.com/maps/place/'+data.location;
@@ -170,11 +174,10 @@ inquirer.prompt(
   
            .row {
              display: flex;
+             flex-direction: row;
              flex-wrap: wrap;
              justify-content: space-between;
-             margin-top: 50px;
-             margin-bottom: 20px;
-             padding-top: 40px;
+             padding-top: 20px;
            }
   
            .card {
@@ -188,7 +191,9 @@ inquirer.prompt(
            
            .col {
            flex: 1;
+           float: left;
            text-align: center;
+           width: 50%
            }
   
            a, a:hover {
@@ -204,14 +209,6 @@ inquirer.prompt(
            }
         </style>`;
 
-
-
-
-
-
-
-
-
         let wrapper = "<div class='wrapper'>";
         let end = "</div>"
         let mainstart = "<div class='main'>";
@@ -225,26 +222,38 @@ inquirer.prompt(
         let plocation = "<a class ='nav-link fas fa-location-arrow' href="+locationURL+"> "+data.location+"</a>";
         let pprofile = "   <a class ='nav-link fab fa-github-alt' href="+data.html_url+"> Github Profile</a>";
         let pblog = "   <a class ='nav-link fas fa-rss' href="+data.blog+"> Blog</a>";
-        let bio = "<h2>"+data.bio+"</h2>";
+        let bio = "<h5 style='text-align: center'>"+data.bio+"</h5>";
         let row = "<div class='row'>";
         let col = "<div class='col'>";
-        let repos = "<h3>Public Repositories <br>"+data.public_repos+"</h3>";
-        let followers = "<h3> Followers <br>"+data.followers+"</h3>";
-        let following = "<h3> Following <br>"+data.following+"</h3>";
-        let starred = "<h3> Github Stars <br>"+stardata.length+"</h3>";
+        let repos = "<h4>Public Repositories <br>"+data.public_repos+"</h4>";
+        let followers = "<h4> Followers <br>"+data.followers+"</h4>";
+        let following = "<h4> Following <br>"+data.following+"</h4>";
+        let starred = "<h4> Github Stars <br>"+stardata.length+"</h4>";
+        let span = "<span>";
+        let spanend = "</span>";
         
-        let profile = style+wrapper+mainstart+card+photoheader+image+end+hi+pname+pcompany+linkboxstart+plocation+pprofile+pblog+end+end+row+bio+end+row+col+card+repos+end+card+starred+end+end+col+card+followers+end+card+following+end+end+wrapper+end+end+
+        let profile = style+wrapper+mainstart+card+photoheader+image+end+hi+pname+pcompany+linkboxstart+plocation+pprofile+pblog+end+end+row+bio+end+row+col+span+card+repos+end+spanend+span+card+starred+end+spanend+end+col+span+card+followers+end+spanend+span+card+following+end+spanend+end+end+end+
         end+end;
+        
 
-          fs.writeFile('profile.html', profile, function(err){
+          fs.writeFile('Profile/profile.html', profile, function(err){
             if(err){
                 return console.log(err);
             }
-              console.log("Response written to profile.html");
+              console.log("Profile.html successfully written, writing Profile.pdf..");
+              createPDF();
           }
         )
-});
+        
+        }});
 
+function createPDF() {
+  var html = fs.readFileSync('Profile/profile.html', 'utf8');
+  pdf.create(html, options).toFile('Profile/Profile.pdf', function(err, res) {
+    if (err) return console.log(err);
+    console.log("Profile.pdf successfully written");
+});
+}
 
 //   function writeToFile(filename, data) {
  
