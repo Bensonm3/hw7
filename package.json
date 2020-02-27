@@ -1,0 +1,22 @@
+{
+    "name": "hw7profilegen",
+    "version": "1.0.0",
+    "description": "program to create a pdf profile based on a the submitted github username",
+    "main": "node index.js",
+    "scripts": {
+      "test":""
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://bensonm3.github.io/hw7/"
+    },
+    "keywords": [
+      "inquirer"
+    ],
+    "author": "Matt Benson",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://bensonm3.github.io/hw7/"
+    },
+    "homepage": "https://github.com/Bensonm3/hw7"
+  }
