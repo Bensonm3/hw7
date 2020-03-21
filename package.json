@@ -1,22 +1,26 @@
 {
-    "name": "hw7profilegen",
-    "version": "1.0.0",
-    "description": "program to create a pdf profile based on a the submitted github username",
-    "main": "node index.js",
-    "scripts": {
-      "test":""
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+https://bensonm3.github.io/hw7/"
-    },
-    "keywords": [
-      "inquirer"
-    ],
-    "author": "Matt Benson",
-    "license": "ISC",
-    "bugs": {
-      "url": "https://bensonm3.github.io/hw7/"
-    },
-    "homepage": "https://github.com/Bensonm3/hw7"
-  }
+  "name": "profile-generator",
+  "version": "1.0.0",
+  "description": "pdf profile page generator",
+  "main": "index.js",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "html-pdf": "^2.2.0",
+    "inquirer": "^7.1.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bensonm3/hw7.git"
+  },
+  "author": "Matt Benson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bensonm3/hw7/issues"
+  },
+  "homepage": "https://github.com/Bensonm3/hw7#readme"
+}
