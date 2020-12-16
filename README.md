@@ -8,7 +8,8 @@ SO THAT I can easily prepare reports for stakeholders
 Features:
 Generate an HTML profile for a Github user by only typing their username
 4 different color configurations are offered for their generated profile
-a demo gif is also included in the files showing the steps needed to create the document
+a demo gif is also included in the files showing the steps needed to create the document.
+
 ![alt text](https://github.com/Bensonm3/Developer-Profile-Generator/blob/master/Screen%20Shot%202020-12-15%20at%208.05.25%20PM.png)
 
 Instructions:
